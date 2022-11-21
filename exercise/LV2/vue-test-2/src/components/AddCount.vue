@@ -1,8 +1,10 @@
 <script>
 import { ref } from "@vue/reactivity";
 export default {
-  setup() {
+  setup () {
     const idx = ref(0);
+
+    const isOpen = ref(false)
 
     const add = () => {
       idx.value++;
@@ -11,15 +13,24 @@ export default {
       idx.value--;
     };
 
-    return { idx, add, remove };
+    return { idx, add, remove, isOpen };
   },
 };
 </script>
 <template>
   <h1>{{ idx }}</h1>
   <div class="btn-box">
-    <button id="add" class="add-btn" @click="add">add 按鈕</button>
-    <button id="remove" class="remove-btn" @click="remove">remove 按鈕</button>
+    <button
+      v-if="isOpen"
+      id="add"
+      class="add-btn"
+      @click="add"
+    >add 按鈕</button>
+    <button
+      id="remove"
+      class="remove-btn"
+      @click="remove"
+    >remove 按鈕</button>
   </div>
 </template>
 

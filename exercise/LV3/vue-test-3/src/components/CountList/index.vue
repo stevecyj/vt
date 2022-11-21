@@ -7,7 +7,7 @@ export default {
       default: 0,
     },
   },
-  setup(props) {
+  setup (props) {
     const listIdx = ref(2);
 
     return { listIdx, props };
@@ -22,4 +22,6 @@ export default {
   </div>
 </template>
 
-<style></style>
+<style>
+
+</style>
