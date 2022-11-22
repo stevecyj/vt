@@ -15,6 +15,17 @@ const colorArr = ['blue', 'white', 'black', 'yellow'];
 describe('ParseData.js', () => {
   it('should be new color', () => {
     const newColor = 'red';
-    expct(ColorArrPush(colorArr, newColor)).toContain(newColor);
+    expect(ColorArrPush(colorArr, newColor)).toContain(newColor);
+  });
+
+  it('test push data', () => {
+    const obj = {
+      title: '123',
+      link: '456',
+      text: 'test demo',
+    };
+
+    // console.log(ParseData('地震', searchData, obj)['地震']);
+    expect(ParseData('地震', searchData, obj)['地震']).toContainEqual(obj);
   });
 });
