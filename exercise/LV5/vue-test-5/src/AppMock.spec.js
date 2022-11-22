@@ -54,7 +54,9 @@ describe('App.vue', () => {
 
     await wrapper.find('button').trigger('click');
     const preText = JSON.parse(wrapper.find('pre').text());
+    const newText = JSON.parse(wrapper.find('.newTie').text());
 
     expect(preText).toEqual(mockData);
+    expect(newText).toEqual(newMock);
   });
 });
