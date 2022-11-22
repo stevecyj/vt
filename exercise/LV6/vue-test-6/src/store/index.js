@@ -28,6 +28,10 @@ export const store = {
     isOpen(state) {
       return state.isOpen;
     },
+
+    isOpenAddStr(state) {
+      return `狀態是 ${state.isOpen}`;
+    },
   },
 };
 
