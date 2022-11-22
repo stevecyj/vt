@@ -1,8 +1,17 @@
-import { shallowMount } from "@vue/test-utils";
-import MenuBtn from "./MenuBtn.vue";
+import { createStore } from 'vuex';
+import { store } from '@/store';
+import { shallowMount } from '@vue/test-utils';
+import MenuBtn from './MenuBtn.vue';
 
-describe("MenuBtn.vue", () => {
-  it("test Vuex action change state", () => {
-    const wrapper = shallowMount(MenuBtn);
+describe('MenuBtn.vue', () => {
+  it('test Vuex action change state', async () => {
+    const wrapper = shallowMount(MenuBtn, {
+      global: {
+        plugins: [createStore(store)],
+      },
+    });
+
+    await wrapper.find('.menuBtn').trigger('click');
+    expect(wrapper.find('.menuBtn').classes().includes('open')).toBe(true);
   });
 });

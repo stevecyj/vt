@@ -1,6 +1,6 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
 
-export default createStore({
+export const store = {
   state() {
     return {
       isOpen: false,
@@ -10,10 +10,10 @@ export default createStore({
   actions: {
     handleOpenState(context) {
       const isOpen = !context.state.isOpen;
-      context.commit("handleOpenState", isOpen);
+      context.commit('handleOpenState', isOpen);
     },
     addCount(context) {
-      context.commit("addCount");
+      context.commit('addCount');
     },
   },
   mutations: {
@@ -29,4 +29,6 @@ export default createStore({
       return state.isOpen;
     },
   },
-});
+};
+
+export default createStore(store);
