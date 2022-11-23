@@ -1,3 +1,4 @@
+import { useRouter } from 'vue-router';
 import { mount, flushPromises } from '@vue/test-utils';
 import Courses from './index.vue';
 
@@ -62,7 +63,17 @@ describe('Courses', () => {
     expect(wrapper.findAll('.card').length).toBe(3);
   });
 
-  it('click course push page', () => {
+  it('click course push page', async () => {
+    const push = jest.fn();
+    useRouter.mockImplementation(() => ({ push }));
+
     const wrapper = mount(Courses);
+    await flushPromises();
+
+    await wrapper.findAll('.card')[0].trigger('click');
+    expect(push).toHaveBeenCalledWith('/courses/286');
+
+    await wrapper.findAll('.card')[1].trigger('click');
+    expect(push).toHaveBeenCalledWith('/courses/419');
   });
 });
